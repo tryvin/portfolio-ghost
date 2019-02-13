@@ -1,0 +1,37 @@
+<article class="post-card {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+
+    {{#if feature_image}}
+        <a class="post-card-image-link" href="{{url}}">
+            {{!-- This is a responsive image, it loads different sizes depending on device
+            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+            <img class="post-card-image"
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(max-width: 1000px) 400px, 700px"
+                src="{{img_url feature_image size="m"}}"
+                alt="{{title}}"
+            />
+        </a>
+    {{/if}}
+
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="{{url}}">
+            <header class="post-card-header">
+                <h2 class="post-card-title">{{title}}</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>{{excerpt words="25"}}</p>
+            </section>
+        </a>
+        <a href="{{url}}" class="post-card-link-button">
+            Read More
+            <svg role="presentation" class="o-animated  c-arrow-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306 306" aria-labelledby="barrow-desc barrow-title" id="arrow"><title id="barrow-title">Arrow</title><desc id="barrow-desc">Arrow icon used to help navigation direction</desc><path d="M94.35 0l-35.7 35.7L175.95 153 58.65 270.3l35.7 35.7 153-153"/></svg>
+            </svg>
+        </a>
+    </div>{{!--/.post-card-content--}}
+
+</article>

@@ -1,0 +1,16 @@
+<nav class="site-nav">
+    <div class="site-nav-left">
+        {{^is "home"}}
+            <div class="site-header-content">
+                {{#if @site.icon}}
+                    <div class="site-logo-container">
+                        <a href="/" title="Go to Home"><img class="site-logo" src="{{img_url @site.icon}}" alt="{{@site.title}}" /></a>
+                    </div>
+                {{/if}}
+                <h1 class="site-title">
+                    <a href="/" title="Go to Home">{{@site.title}}</a>
+                </h1>
+            </div>
+        {{/is}}
+    </div>
+</nav>

@@ -1,0 +1,64 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{> header background=@site.cover_image}} {{!--Special header.hbs partial to generate the <header> tag--}}
+    <div class="inner">
+        <div class="site-header-content">
+            {{#if @site.icon}}
+                <div class="site-logo-container">
+                    <img class="site-logo" src="{{img_url @site.icon}}" alt="{{@site.title}}" />
+                </div>
+            {{/if}}
+            <h1 class="site-title">
+                {{@site.title}}
+            </h1>
+        </div>
+        <div class="site-header-menu">
+            <i class="fas fa-bars menu-button"></i>
+        </div>
+    </div>
+
+    <div class="home-header-resume">
+        <div class="home-header-resume-container">
+            <h2>
+                <a href="/resume" title="My Résumé">Résumé</a>
+            </h2>
+            <div class="resume-text">
+                {{#get "pages" filter="slug:resume" as |article|}}
+                    {{#article}}
+                        <p>{{excerpt words="80"}}</p>
+                    {{else}}
+                        <p>You need to setup a page called "Resume" in order for this to be filled</p>
+                    {{/article}}
+                {{else}}
+                    <p>There was a issue running the Resume query</p>
+                {{/get}}
+            </div>
+        </div>
+    </div>
+    <div class="home-header-bottom-section-title">
+        <div class="left-content">
+            In this section you will see my recents works
+        </div>
+        <h2 class="right-content">
+            Work
+        </h2>
+    </div>
+</header>
+
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <div class="post-feed">
+            {{#foreach posts}}
+
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
+
+            {{/foreach}}
+        </div>
+
+    </div>
+</main>
